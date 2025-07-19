@@ -68,9 +68,77 @@
   },
   "dashboard": {
     "title": "Dashboard",
-    "welcome": "Welcome to Sparsh!",
-    "subtitle": "Your onboarding is complete. This is a placeholder for the main dashboard.",
-    "placeholder": "Dashboard content will be implemented in future stages."
+    "welcome": "Good morning, {{name}}!",
+    "todaysTasks": "Today's Tasks",
+    "noTasks": "No tasks for today",
+    "taskCompleted": "Task completed successfully!",
+    "dueNow": "Due Now",
+    "dueLater": "Due Later",
+    "completed": "Completed",
+    "missed": "Missed"
+  },
+  "tabs": {
+    "dashboard": "Dashboard",
+    "rewards": "Rewards",
+    "profile": "Profile"
+  },
+  "dailyCheckin": {
+    "title": "Daily Check-in",
+    "subtitle": "Tell us how you're feeling today",
+    "prompt": "Good morning! How are you feeling after taking your medication?",
+    "tapToSpeak": "Tap to speak",
+    "listening": "Listening...",
+    "processing": "Processing...",
+    "transcribed": "You said: \"{{text}}\"",
+    "isCorrect": "Is this correct?",
+    "yes": "Yes, that's correct",
+    "tryAgain": "No, try again",
+    "thankYou": "Thank you for your feedback!",
+    "saved": "Your check-in has been saved successfully."
+  },
+  "doseTracking": {
+    "title": "Dose Tracking",
+    "subtitle": "Verify your medication dose",
+    "scanQr": "Scan Medication QR Code",
+    "recordVideo": "Record Video of Dose",
+    "scanDescription": "Scan the QR code on your medication package",
+    "videoDescription": "Record a video showing you taking your dose"
+  },
+  "qrScanner": {
+    "title": "QR Code Scanner",
+    "subtitle": "Point camera at QR code on medication package",
+    "scanning": "Scanning...",
+    "success": "Dose Verified!",
+    "error": "Failed to scan QR code. Please try again.",
+    "permission": "Camera permission is required to scan QR codes"
+  },
+  "videoRecorder": {
+    "title": "Video Recording",
+    "subtitle": "Record yourself taking your medication",
+    "startRecording": "Start Recording",
+    "stopRecording": "Stop Recording",
+    "recording": "Recording... {{seconds}}s",
+    "uploading": "Uploading video...",
+    "success": "Video uploaded successfully!",
+    "error": "Failed to record video. Please try again.",
+    "permission": "Camera permission is required to record videos"
+  },
+  "rewards": {
+    "title": "Rewards & Badges",
+    "subtitle": "Track your progress and achievements",
+    "comingSoon": "Rewards and badges coming soon!",
+    "description": "Complete your daily tasks to earn points and unlock achievements."
+  },
+  "profile": {
+    "title": "Profile",
+    "participantId": "Participant ID",
+    "language": "Language",
+    "notifications": "Notifications",
+    "support": "Support",
+    "about": "About",
+    "logout": "Logout",
+    "logoutConfirm": "Are you sure you want to logout?",
+    "cancel": "Cancel"
   },
   "common": {
     "continue": "Continue",

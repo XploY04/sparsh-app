@@ -1,26 +1,42 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { Text } from "react-native-paper";
+import { Text, IconButton } from "react-native-paper";
 
 interface ScreenHeaderProps {
   title: string;
   subtitle?: string;
+  showBackButton?: boolean;
+  onBackPress?: () => void;
 }
 
 export const ScreenHeader: React.FC<ScreenHeaderProps> = ({
   title,
   subtitle,
+  showBackButton = false,
+  onBackPress,
 }) => {
   return (
     <View style={styles.container}>
-      <Text variant="headlineMedium" style={styles.title}>
-        {title}
-      </Text>
-      {subtitle && (
-        <Text variant="bodyLarge" style={styles.subtitle}>
-          {subtitle}
-        </Text>
+      {showBackButton && (
+        <View style={styles.backButtonContainer}>
+          <IconButton
+            icon="arrow-left"
+            size={24}
+            onPress={onBackPress}
+            style={styles.backButton}
+          />
+        </View>
       )}
+      <View style={styles.headerContent}>
+        <Text variant="headlineMedium" style={styles.title}>
+          {title}
+        </Text>
+        {subtitle && (
+          <Text variant="bodyLarge" style={styles.subtitle}>
+            {subtitle}
+          </Text>
+        )}
+      </View>
     </View>
   );
 };
@@ -28,6 +44,18 @@ export const ScreenHeader: React.FC<ScreenHeaderProps> = ({
 const styles = StyleSheet.create({
   container: {
     marginBottom: 32,
+    position: "relative",
+  },
+  backButtonContainer: {
+    position: "absolute",
+    left: -16,
+    top: 0,
+    zIndex: 1,
+  },
+  backButton: {
+    margin: 0,
+  },
+  headerContent: {
     alignItems: "center",
   },
   title: {

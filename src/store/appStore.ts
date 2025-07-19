@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { Task, mockTasks } from "../data/tasks";
 
 export interface AppState {
   // Language settings
@@ -15,6 +16,13 @@ export interface AppState {
   isVoiceConsentRecorded: boolean;
   isQuizCompleted: boolean;
   isOnboardingComplete: boolean;
+
+  // Tasks state
+  tasks: Task[];
+  updateTaskStatus: (
+    taskId: string,
+    status: "pending" | "completed" | "missed"
+  ) => void;
 
   // Actions
   setMobileNumber: (mobile: string) => void;
@@ -43,6 +51,7 @@ export const useAppStore = create<AppState>((set) => ({
   isVoiceConsentRecorded: false,
   isQuizCompleted: false,
   isOnboardingComplete: false,
+  tasks: mockTasks,
 
   // Actions
   setLanguage: (language) => set({ language }),
@@ -58,6 +67,14 @@ export const useAppStore = create<AppState>((set) => ({
     set({ isOnboardingComplete, isAuthenticated: isOnboardingComplete }),
   setAuthenticated: (isAuthenticated) => set({ isAuthenticated }),
 
+  // Task actions
+  updateTaskStatus: (taskId, status) =>
+    set((state) => ({
+      tasks: state.tasks.map((task) =>
+        task.id === taskId ? { ...task, status } : task
+      ),
+    })),
+
   resetOnboarding: () =>
     set({
       isAuthenticated: false,
@@ -69,5 +86,6 @@ export const useAppStore = create<AppState>((set) => ({
       isVoiceConsentRecorded: false,
       isQuizCompleted: false,
       isOnboardingComplete: false,
+      tasks: mockTasks, // Reset tasks to default
     }),
 }));

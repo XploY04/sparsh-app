@@ -9,7 +9,6 @@ import {
   InformedConsentScreen,
   VoiceConsentScreen,
   ComprehensionQuizScreen,
-  DashboardPlaceholderScreen,
 } from "../screens";
 import { OnboardingStackParamList } from "./types";
 
@@ -36,10 +35,6 @@ export const OnboardingNavigator: React.FC = () => {
       <Stack.Screen
         name="ComprehensionQuiz"
         component={ComprehensionQuizScreen}
-      />
-      <Stack.Screen
-        name="DashboardPlaceholder"
-        component={DashboardPlaceholderScreen}
       />
     </Stack.Navigator>
   );

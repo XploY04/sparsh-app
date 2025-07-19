@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import { OnboardingNavigator } from "./OnboardingNavigator";
+import { MainStackNavigator } from "./MainStackNavigator";
 import { useAppStore } from "../store/appStore";
 import { RootStackParamList } from "./types";
 
@@ -17,7 +18,7 @@ export const RootNavigator: React.FC = () => {
         {!isOnboardingComplete ? (
           <Stack.Screen name="Onboarding" component={OnboardingNavigator} />
         ) : (
-          <Stack.Screen name="Dashboard" component={OnboardingNavigator} />
+          <Stack.Screen name="Main" component={MainStackNavigator} />
         )}
       </Stack.Navigator>
     </NavigationContainer>

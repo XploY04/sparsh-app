@@ -6,10 +6,23 @@ export type OnboardingStackParamList = {
   InformedConsent: undefined;
   VoiceConsent: undefined;
   ComprehensionQuiz: undefined;
-  DashboardPlaceholder: undefined;
+};
+
+export type MainTabParamList = {
+  Dashboard: undefined;
+  Rewards: undefined;
+  Profile: undefined;
+};
+
+export type MainStackParamList = {
+  MainTabs: undefined;
+  DailyCheckin: undefined;
+  DoseTracking: undefined;
+  QrScanner: undefined;
+  VideoRecorder: undefined;
 };
 
 export type RootStackParamList = {
   Onboarding: undefined;
-  Dashboard: undefined;
+  Main: undefined;
 };

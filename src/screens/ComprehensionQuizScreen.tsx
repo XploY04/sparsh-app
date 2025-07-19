@@ -65,7 +65,10 @@ export const ComprehensionQuizScreen: React.FC = () => {
     Alert.alert("Success!", t("comprehensionQuiz.welcomeMessage"), [
       {
         text: t("comprehensionQuiz.proceedToDashboard"),
-        onPress: () => navigation.navigate("DashboardPlaceholder"),
+        onPress: () => {
+          // This will trigger the RootNavigator to switch to Main stack
+          // which contains the MainTabNavigator
+        },
       },
     ]);
   };
