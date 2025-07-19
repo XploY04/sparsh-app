@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "sparsh-app",
+    "name": "Sparsh Participant App",
     "slug": "sparsh-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -24,6 +24,14 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-localization",
+        {
+          "locales": ["en", "hi"]
+        }
+      ]
+    ]
   }
 }

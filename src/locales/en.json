@@ -1,0 +1,83 @@
+{
+  "languageSelection": {
+    "title": "Select Language",
+    "subtitle": "Choose your preferred language",
+    "english": "English",
+    "hindi": "हिन्दी"
+  },
+  "login": {
+    "title": "Login / Register",
+    "subtitle": "Enter your mobile number to continue",
+    "mobileLabel": "Mobile Number",
+    "mobilePlaceholder": "Enter 10-digit mobile number",
+    "sendOTP": "Send OTP",
+    "otpLabel": "Enter OTP",
+    "otpPlaceholder": "Enter 4-digit OTP",
+    "verify": "Verify",
+    "invalidMobile": "Please enter a valid 10-digit mobile number",
+    "otpSent": "OTP sent successfully!"
+  },
+  "pinSetup": {
+    "title": "Create Your PIN",
+    "subtitle": "Set up a 4-digit PIN to secure your account",
+    "enterPin": "Enter 4-digit PIN",
+    "confirmPin": "Confirm PIN",
+    "pinMismatch": "PINs do not match. Please try again.",
+    "pinSet": "PIN set successfully!"
+  },
+  "aadhaarKyc": {
+    "title": "Identity Verification",
+    "subtitle": "We need to verify your identity using Aadhaar for regulatory compliance",
+    "description": "This is a mandatory step required by Indian regulations for clinical trial participation. Your Aadhaar data will be securely processed and used only for verification purposes.",
+    "verifyButton": "Verify with Aadhaar",
+    "verifying": "Verifying your identity...",
+    "success": "Identity verified successfully!",
+    "note": "Note: This is a mockup for demonstration. Real implementation would integrate with actual eKYC services."
+  },
+  "informedConsent": {
+    "title": "Informed Consent Form",
+    "subtitle": "Please read and understand the following information",
+    "readAloud": "Read Aloud",
+    "recordConsent": "Record My Consent",
+    "scrollToEnd": "Please scroll to the end to continue",
+    "readingAloud": "Reading aloud...",
+    "stopReading": "Stop Reading"
+  },
+  "voiceConsent": {
+    "title": "Voice Consent Recording",
+    "subtitle": "Record your audio consent",
+    "instruction": "Press the microphone and say:",
+    "consentText": "\"I have understood and I agree to participate\"",
+    "startRecording": "Tap to Start Recording",
+    "recording": "Recording... Speak now",
+    "stopRecording": "Tap to Stop",
+    "consentRecorded": "Consent Recorded Successfully!",
+    "continue": "Continue"
+  },
+  "comprehensionQuiz": {
+    "title": "Comprehension Quiz",
+    "subtitle": "Answer these questions to confirm your understanding",
+    "question": "Question {{number}} of {{total}}",
+    "next": "Next",
+    "finish": "Finish",
+    "correct": "Correct!",
+    "incorrect": "Incorrect. Please try again.",
+    "quizComplete": "Quiz Complete!",
+    "welcomeMessage": "Setup Complete! Welcome to Sparsh",
+    "proceedToDashboard": "Proceed to Dashboard"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome to Sparsh!",
+    "subtitle": "Your onboarding is complete. This is a placeholder for the main dashboard.",
+    "placeholder": "Dashboard content will be implemented in future stages."
+  },
+  "common": {
+    "continue": "Continue",
+    "back": "Back",
+    "next": "Next",
+    "loading": "Loading...",
+    "error": "Something went wrong. Please try again.",
+    "success": "Success!"
+  }
+}
