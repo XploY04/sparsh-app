@@ -10,6 +10,7 @@ import { t } from "../locales/i18n";
 import { ScreenHeader } from "../components/ScreenHeader";
 import { getTaskIcon, getTaskColor } from "../data/tasks";
 import { MainStackParamList } from "../navigation/types";
+import { textColors, backgroundColors } from "../theme/colors";
 
 type DashboardNavigationProp = StackNavigationProp<MainStackParamList>;
 
@@ -182,7 +183,7 @@ export const DashboardScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: backgroundColors.screen,
   },
   scrollView: {
     flex: 1,
@@ -196,6 +197,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     marginBottom: 16,
     fontWeight: "600",
+    color: textColors.primary,
   },
   emptyCard: {
     marginBottom: 16,
@@ -203,15 +205,17 @@ const styles = StyleSheet.create({
   emptyText: {
     textAlign: "center",
     fontStyle: "italic",
-    opacity: 0.7,
+    color: textColors.tertiary,
   },
   taskCard: {
     marginBottom: 12,
     elevation: 2,
+    backgroundColor: backgroundColors.card,
   },
   completedTaskCard: {
     marginBottom: 12,
     opacity: 0.7,
+    backgroundColor: backgroundColors.card,
   },
   taskContent: {
     paddingVertical: 12,
@@ -229,15 +233,16 @@ const styles = StyleSheet.create({
   },
   taskTitle: {
     fontWeight: "600",
+    color: textColors.primary,
   },
   completedTaskTitle: {
     fontWeight: "600",
     textDecorationLine: "line-through",
-    opacity: 0.7,
+    color: textColors.secondary,
   },
   taskDescription: {
-    opacity: 0.7,
     marginTop: 2,
+    color: textColors.secondary,
   },
   taskRight: {
     flexDirection: "row",
@@ -249,6 +254,6 @@ const styles = StyleSheet.create({
   completedTitle: {
     marginTop: 24,
     marginBottom: 16,
-    opacity: 0.7,
+    color: textColors.secondary,
   },
 });

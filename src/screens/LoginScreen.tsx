@@ -10,6 +10,7 @@ import { t } from "../locales/i18n";
 import { ScreenHeader } from "../components/ScreenHeader";
 import { OtpInput } from "../components/OtpInput";
 import { OnboardingStackParamList } from "../navigation/types";
+import { textColors, backgroundColors } from "../theme/colors";
 
 type NavigationProp = StackNavigationProp<OnboardingStackParamList, "Login">;
 
@@ -114,7 +115,7 @@ export const LoginScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: backgroundColors.screen,
   },
   content: {
     flex: 1,
@@ -126,6 +127,7 @@ const styles = StyleSheet.create({
   },
   input: {
     marginBottom: 8,
+    backgroundColor: backgroundColors.card,
   },
   button: {
     marginTop: 16,
@@ -137,11 +139,12 @@ const styles = StyleSheet.create({
   otpLabel: {
     marginBottom: 8,
     fontWeight: "bold",
+    color: textColors.primary,
   },
   note: {
     marginTop: 8,
-    opacity: 0.6,
     fontStyle: "italic",
+    color: textColors.tertiary,
   },
   verifyButton: {
     marginTop: 16,

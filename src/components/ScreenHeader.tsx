@@ -1,6 +1,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import { Text, IconButton } from "react-native-paper";
+import { textColors } from "../theme/colors";
 
 interface ScreenHeaderProps {
   title: string;
@@ -24,6 +25,7 @@ export const ScreenHeader: React.FC<ScreenHeaderProps> = ({
             size={24}
             onPress={onBackPress}
             style={styles.backButton}
+            iconColor={textColors.primary}
           />
         </View>
       )}
@@ -62,9 +64,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: 8,
     fontWeight: "bold",
+    color: textColors.primary,
   },
   subtitle: {
     textAlign: "center",
-    opacity: 0.7,
+    color: textColors.secondary,
   },
 });

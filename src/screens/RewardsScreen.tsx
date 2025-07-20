@@ -15,6 +15,7 @@ import { t } from "../locales/i18n";
 import { ScreenHeader } from "../components/ScreenHeader";
 import { useAppStore } from "../store/appStore";
 import { Badge } from "../data/badges";
+import { textColors, backgroundColors } from "../theme/colors";
 
 export const RewardsScreen: React.FC = () => {
   const { totalPoints, userBadges } = useAppStore();
@@ -205,7 +206,7 @@ export const RewardsScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: backgroundColors.screen,
   },
   content: {
     flex: 1,
@@ -213,7 +214,7 @@ const styles = StyleSheet.create({
   },
   pointsCard: {
     marginBottom: 16,
-    backgroundColor: "#fff",
+    backgroundColor: backgroundColors.card,
   },
   pointsContent: {
     alignItems: "center",
@@ -226,7 +227,7 @@ const styles = StyleSheet.create({
   },
   pointsTitle: {
     marginLeft: 8,
-    color: "#333",
+    color: textColors.primary,
   },
   pointsValue: {
     fontWeight: "bold",
@@ -234,7 +235,7 @@ const styles = StyleSheet.create({
   },
   summaryCard: {
     marginBottom: 16,
-    backgroundColor: "#fff",
+    backgroundColor: backgroundColors.card,
   },
   progressRow: {
     flexDirection: "row",
@@ -249,7 +250,7 @@ const styles = StyleSheet.create({
     color: "#6200EE",
   },
   progressLabel: {
-    color: "#666",
+    color: textColors.secondary,
     marginTop: 4,
   },
   section: {
@@ -257,10 +258,10 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     marginBottom: 8,
-    color: "#333",
+    color: textColors.primary,
   },
   sectionSubtitle: {
-    color: "#666",
+    color: textColors.secondary,
     marginBottom: 16,
   },
   badgeRow: {
@@ -272,7 +273,7 @@ const styles = StyleSheet.create({
     minHeight: 120,
   },
   unlockedBadge: {
-    backgroundColor: "#fff",
+    backgroundColor: backgroundColors.card,
     borderWidth: 2,
     borderColor: "#6200EE",
   },
@@ -293,7 +294,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: -4,
     right: -4,
-    backgroundColor: "#fff",
+    backgroundColor: backgroundColors.card,
     borderRadius: 8,
     padding: 2,
   },
@@ -306,7 +307,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#4CAF50",
   },
   modalContent: {
-    backgroundColor: "white",
+    backgroundColor: backgroundColors.card,
     padding: 24,
     margin: 20,
     borderRadius: 8,
@@ -322,6 +323,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
     marginBottom: 8,
     textAlign: "center",
+    color: textColors.primary,
   },
   modalEarnedBadge: {
     backgroundColor: "#4CAF50",
@@ -329,7 +331,7 @@ const styles = StyleSheet.create({
   modalDescription: {
     textAlign: "center",
     marginBottom: 24,
-    color: "#666",
+    color: textColors.secondary,
   },
   modalButton: {
     minWidth: 120,

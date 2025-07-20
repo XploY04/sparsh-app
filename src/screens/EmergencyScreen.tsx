@@ -7,6 +7,7 @@ import { useNavigation } from "@react-navigation/native";
 
 import { t } from "../locales/i18n";
 import { ScreenHeader } from "../components/ScreenHeader";
+import { textColors, backgroundColors } from "../theme/colors";
 
 export const EmergencyScreen: React.FC = () => {
   const navigation = useNavigation();
@@ -206,7 +207,7 @@ export const EmergencyScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: backgroundColors.screen,
   },
   content: {
     flex: 1,
@@ -214,7 +215,7 @@ const styles = StyleSheet.create({
   },
   emergencyNotice: {
     marginBottom: 24,
-    backgroundColor: "#FFEBEE",
+    backgroundColor: backgroundColors.error,
     borderLeftWidth: 4,
     borderLeftColor: "#F44336",
   },
@@ -225,11 +226,11 @@ const styles = StyleSheet.create({
   },
   noticeTitle: {
     marginLeft: 8,
-    color: "#F44336",
+    color: textColors.error,
     fontWeight: "600",
   },
   noticeText: {
-    color: "#666",
+    color: textColors.secondary,
     lineHeight: 20,
   },
   section: {
@@ -237,16 +238,16 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     marginBottom: 8,
-    color: "#333",
+    color: textColors.primary,
   },
   sectionSubtitle: {
-    color: "#666",
+    color: textColors.secondary,
     marginBottom: 16,
     lineHeight: 20,
   },
   contactCard: {
     marginBottom: 12,
-    backgroundColor: "#fff",
+    backgroundColor: backgroundColors.card,
   },
   contactHeader: {
     flexDirection: "row",
@@ -258,12 +259,12 @@ const styles = StyleSheet.create({
     marginLeft: 12,
   },
   contactTitle: {
-    color: "#333",
+    color: textColors.primary,
     fontWeight: "600",
     marginBottom: 4,
   },
   contactDescription: {
-    color: "#666",
+    color: textColors.secondary,
     lineHeight: 18,
   },
   contactActions: {
@@ -280,7 +281,7 @@ const styles = StyleSheet.create({
   },
   reportCard: {
     marginBottom: 24,
-    backgroundColor: "#FFF8E1",
+    backgroundColor: backgroundColors.warning,
     borderLeftWidth: 4,
     borderLeftColor: "#FF9800",
   },
@@ -291,12 +292,12 @@ const styles = StyleSheet.create({
   reportTitle: {
     marginTop: 8,
     textAlign: "center",
-    color: "#333",
+    color: textColors.primary,
     fontWeight: "600",
   },
   reportDescription: {
     textAlign: "center",
-    color: "#666",
+    color: textColors.secondary,
     lineHeight: 20,
     marginBottom: 20,
   },
@@ -305,11 +306,11 @@ const styles = StyleSheet.create({
     minWidth: 200,
   },
   infoCard: {
-    backgroundColor: "#fff",
+    backgroundColor: backgroundColors.card,
     marginBottom: 24,
   },
   infoTitle: {
-    color: "#333",
+    color: textColors.primary,
     fontWeight: "600",
     marginBottom: 12,
   },
@@ -317,7 +318,7 @@ const styles = StyleSheet.create({
     paddingLeft: 8,
   },
   infoItem: {
-    color: "#666",
+    color: textColors.secondary,
     lineHeight: 24,
     marginBottom: 4,
   },
