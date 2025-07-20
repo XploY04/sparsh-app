@@ -15,7 +15,7 @@ type VideoRecorderNavigationProp = StackNavigationProp<MainStackParamList>;
 
 export const VideoRecorderScreen: React.FC = () => {
   const navigation = useNavigation<VideoRecorderNavigationProp>();
-  const { updateTaskStatus } = useAppStore();
+  const { updateTaskStatus, recordDose } = useAppStore();
   const [hasPermission, setHasPermission] = useState<boolean | null>(null);
   const [isRecording, setIsRecording] = useState(false);
   const [recordingTime, setRecordingTime] = useState(0);
@@ -73,6 +73,9 @@ export const VideoRecorderScreen: React.FC = () => {
 
       // Mark evening dose as completed
       updateTaskStatus("3", "completed");
+
+      // Record the dose for gamification (this awards points and updates streaks)
+      recordDose();
 
       // Navigate back after showing success
       setTimeout(() => {

@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { Task, mockTasks } from "../data/tasks";
+import { Badge, badges, checkBadgeCriteria } from "../data/badges";
 
 export interface AppState {
   // Language settings
@@ -24,6 +25,23 @@ export interface AppState {
     status: "pending" | "completed" | "missed"
   ) => void;
 
+  // Gamification state
+  totalPoints: number;
+  userBadges: Badge[];
+  checkinStreak: number;
+  doseStreak: number;
+  totalCheckins: number;
+  totalDoses: number;
+  earlyMorningCheckins: number;
+  lastCheckinDate: string | null;
+  lastDoseDate: string | null;
+
+  // Gamification actions
+  awardPoints: (points: number) => void;
+  recordCheckin: () => void;
+  recordDose: () => void;
+  checkAndUpdateBadges: () => void;
+
   // Actions
   setMobileNumber: (mobile: string) => void;
   setOtpVerified: (verified: boolean) => void;
@@ -39,7 +57,7 @@ export interface AppState {
   resetOnboarding: () => void;
 }
 
-export const useAppStore = create<AppState>((set) => ({
+export const useAppStore = create<AppState>((set, get) => ({
   // Initial state
   language: "en",
   isAuthenticated: false,
@@ -52,6 +70,17 @@ export const useAppStore = create<AppState>((set) => ({
   isQuizCompleted: false,
   isOnboardingComplete: false,
   tasks: mockTasks,
+
+  // Gamification initial state
+  totalPoints: 0,
+  userBadges: badges.map((badge) => ({ ...badge, isUnlocked: false })),
+  checkinStreak: 0,
+  doseStreak: 0,
+  totalCheckins: 0,
+  totalDoses: 0,
+  earlyMorningCheckins: 0,
+  lastCheckinDate: null,
+  lastDoseDate: null,
 
   // Actions
   setLanguage: (language) => set({ language }),
@@ -75,6 +104,90 @@ export const useAppStore = create<AppState>((set) => ({
       ),
     })),
 
+  // Gamification actions
+  awardPoints: (points) =>
+    set((state) => ({
+      totalPoints: state.totalPoints + points,
+    })),
+
+  recordCheckin: () => {
+    const today = new Date().toDateString();
+    const state = get();
+
+    // Check if already checked in today
+    if (state.lastCheckinDate === today) return;
+
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const yesterdayStr = yesterday.toDateString();
+
+    // Calculate streak
+    let newStreak = 1;
+    if (state.lastCheckinDate === yesterdayStr) {
+      newStreak = state.checkinStreak + 1;
+    }
+
+    // Check if early morning (before 8 AM)
+    const currentHour = new Date().getHours();
+    const isEarlyMorning = currentHour < 8;
+
+    set((state) => ({
+      totalCheckins: state.totalCheckins + 1,
+      checkinStreak: newStreak,
+      lastCheckinDate: today,
+      totalPoints: state.totalPoints + 10, // Award 10 points per checkin
+      earlyMorningCheckins: isEarlyMorning
+        ? state.earlyMorningCheckins + 1
+        : state.earlyMorningCheckins,
+    }));
+
+    // Check for new badges
+    get().checkAndUpdateBadges();
+  },
+
+  recordDose: () => {
+    const today = new Date().toDateString();
+    const state = get();
+
+    // Check if already recorded dose today
+    if (state.lastDoseDate === today) return;
+
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const yesterdayStr = yesterday.toDateString();
+
+    // Calculate streak
+    let newStreak = 1;
+    if (state.lastDoseDate === yesterdayStr) {
+      newStreak = state.doseStreak + 1;
+    }
+
+    set((state) => ({
+      totalDoses: state.totalDoses + 1,
+      doseStreak: newStreak,
+      lastDoseDate: today,
+      totalPoints: state.totalPoints + 10, // Award 10 points per dose
+    }));
+
+    // Check for new badges
+    get().checkAndUpdateBadges();
+  },
+
+  checkAndUpdateBadges: () => {
+    const state = get();
+    const userStats = {
+      checkinStreak: state.checkinStreak,
+      doseStreak: state.doseStreak,
+      totalPoints: state.totalPoints,
+      totalCheckins: state.totalCheckins,
+      totalDoses: state.totalDoses,
+      earlyMorningCheckins: state.earlyMorningCheckins,
+    };
+
+    const updatedBadges = checkBadgeCriteria(userStats, state.userBadges);
+    set({ userBadges: updatedBadges });
+  },
+
   resetOnboarding: () =>
     set({
       isAuthenticated: false,
@@ -87,5 +200,15 @@ export const useAppStore = create<AppState>((set) => ({
       isQuizCompleted: false,
       isOnboardingComplete: false,
       tasks: mockTasks, // Reset tasks to default
+      // Reset gamification state
+      totalPoints: 0,
+      userBadges: badges.map((badge) => ({ ...badge, isUnlocked: false })),
+      checkinStreak: 0,
+      doseStreak: 0,
+      totalCheckins: 0,
+      totalDoses: 0,
+      earlyMorningCheckins: 0,
+      lastCheckinDate: null,
+      lastDoseDate: null,
     }),
 }));

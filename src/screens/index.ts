@@ -13,5 +13,14 @@ export { DailyCheckinScreen } from "./DailyCheckinScreen";
 export { DoseTrackingScreen } from "./DoseTrackingScreen";
 export { QrScannerScreen } from "./QrScannerScreen";
 export { VideoRecorderScreen } from "./VideoRecorderScreen";
+
+// Rewards system
+export { RewardsScreen } from "./RewardsScreen";
 export { RewardsPlaceholderScreen } from "./RewardsPlaceholderScreen";
+
+// Emergency support
+export { EmergencyScreen } from "./EmergencyScreen";
+export { ReportEventScreen } from "./ReportEventScreen";
+
+// Profile
 export { ProfileScreen } from "./ProfileScreen";

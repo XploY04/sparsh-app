@@ -16,6 +16,7 @@
     "expo": "~53.0.20",
     "expo-camera": "^16.1.11",
     "expo-localization": "^16.1.6",
+    "expo-notifications": "^0.31.4",
     "expo-status-bar": "~2.2.3",
     "i18n-js": "^4.5.1",
     "react": "19.0.0",

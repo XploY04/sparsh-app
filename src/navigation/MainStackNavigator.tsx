@@ -7,6 +7,8 @@ import {
   DoseTrackingScreen,
   QrScannerScreen,
   VideoRecorderScreen,
+  EmergencyScreen,
+  ReportEventScreen,
 } from "../screens";
 import { MainStackParamList } from "./types";
 
@@ -31,6 +33,30 @@ export const MainStackNavigator: React.FC = () => {
       <Stack.Screen name="DoseTracking" component={DoseTrackingScreen} />
       <Stack.Screen name="QrScanner" component={QrScannerScreen} />
       <Stack.Screen name="VideoRecorder" component={VideoRecorderScreen} />
+      <Stack.Screen
+        name="Emergency"
+        component={EmergencyScreen}
+        options={{
+          headerShown: true,
+          title: "Emergency Support",
+          headerStyle: {
+            backgroundColor: "#F44336",
+          },
+          headerTintColor: "#fff",
+        }}
+      />
+      <Stack.Screen
+        name="ReportEvent"
+        component={ReportEventScreen}
+        options={{
+          headerShown: true,
+          title: "Report Adverse Event",
+          headerStyle: {
+            backgroundColor: "#FF9800",
+          },
+          headerTintColor: "#fff",
+        }}
+      />
     </Stack.Navigator>
   );
 };

@@ -14,7 +14,7 @@ type DailyCheckinNavigationProp = StackNavigationProp<MainStackParamList>;
 
 export const DailyCheckinScreen: React.FC = () => {
   const navigation = useNavigation<DailyCheckinNavigationProp>();
-  const { updateTaskStatus } = useAppStore();
+  const { updateTaskStatus, recordCheckin } = useAppStore();
   const [isListening, setIsListening] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [transcribedText, setTranscribedText] = useState("");
@@ -54,6 +54,9 @@ export const DailyCheckinScreen: React.FC = () => {
   const handleConfirm = () => {
     // Update the task status to completed
     updateTaskStatus("1", "completed"); // Assuming task ID "1" is daily check-in
+
+    // Record the check-in for gamification (this awards points and updates streaks)
+    recordCheckin();
 
     // Show success message and navigate back
     setTimeout(() => {

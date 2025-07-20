@@ -20,6 +20,8 @@ export type MainStackParamList = {
   DoseTracking: undefined;
   QrScanner: undefined;
   VideoRecorder: undefined;
+  Emergency: undefined;
+  ReportEvent: undefined;
 };
 
 export type RootStackParamList = {

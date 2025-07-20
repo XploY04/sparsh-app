@@ -1,0 +1,72 @@
+[
+  {
+    "id": "first_checkin",
+    "name": "First Steps",
+    "description": "Complete your first daily check-in",
+    "isUnlocked": false,
+    "icon": "check-circle"
+  },
+  {
+    "id": "streak_3",
+    "name": "Getting Started",
+    "description": "Complete daily check-ins for 3 consecutive days",
+    "isUnlocked": false,
+    "icon": "fire"
+  },
+  {
+    "id": "streak_7",
+    "name": "Consistency Champion",
+    "description": "Complete daily check-ins for 7 consecutive days",
+    "isUnlocked": false,
+    "icon": "trophy"
+  },
+  {
+    "id": "streak_30",
+    "name": "Dedication Master",
+    "description": "Complete daily check-ins for 30 consecutive days",
+    "isUnlocked": false,
+    "icon": "crown"
+  },
+  {
+    "id": "first_dose",
+    "name": "Dose Defender",
+    "description": "Verify your first medication dose",
+    "isUnlocked": false,
+    "icon": "pill"
+  },
+  {
+    "id": "dose_streak_7",
+    "name": "Medication Master",
+    "description": "Track doses for 7 consecutive days",
+    "isUnlocked": false,
+    "icon": "medical-bag"
+  },
+  {
+    "id": "perfect_week",
+    "name": "Perfect Week",
+    "description": "Complete all tasks for an entire week",
+    "isUnlocked": false,
+    "icon": "star"
+  },
+  {
+    "id": "points_100",
+    "name": "Century Scorer",
+    "description": "Earn your first 100 points",
+    "isUnlocked": false,
+    "icon": "numeric-100-box"
+  },
+  {
+    "id": "points_500",
+    "name": "High Achiever",
+    "description": "Earn 500 points total",
+    "isUnlocked": false,
+    "icon": "numeric-500-box"
+  },
+  {
+    "id": "early_bird",
+    "name": "Early Bird",
+    "description": "Complete morning check-in before 8 AM three times",
+    "isUnlocked": false,
+    "icon": "weather-sunset-up"
+  }
+]

@@ -15,7 +15,7 @@ type QrScannerNavigationProp = StackNavigationProp<MainStackParamList>;
 
 export const QrScannerScreen: React.FC = () => {
   const navigation = useNavigation<QrScannerNavigationProp>();
-  const { updateTaskStatus } = useAppStore();
+  const { updateTaskStatus, recordDose } = useAppStore();
   const [hasPermission, setHasPermission] = useState<boolean | null>(null);
   const [scanned, setScanned] = useState(false);
   const [isScanning, setIsScanning] = useState(false);
@@ -45,6 +45,9 @@ export const QrScannerScreen: React.FC = () => {
     setTimeout(() => {
       // Mark evening dose as completed (assuming QR scan is for evening dose)
       updateTaskStatus("3", "completed");
+
+      // Record the dose for gamification (this awards points and updates streaks)
+      recordDose();
 
       // Show success and navigate back
       setIsScanning(false);

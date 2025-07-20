@@ -27,7 +27,8 @@
       "permissions": [
         "android.permission.CAMERA",
         "android.permission.RECORD_AUDIO"
-      ]
+      ],
+      "package": "com.xploy04.sparshapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -36,9 +37,17 @@
       [
         "expo-localization",
         {
-          "locales": ["en", "hi"]
+          "locales": [
+            "en",
+            "hi"
+          ]
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "8995755f-5367-4813-afb9-9c15c7ed948e"
+      }
+    }
   }
 }
