@@ -1,3 +1,18 @@
+export type WelcomeStackParamList = {
+  Welcome: undefined;
+  TrialQuestionnaire: undefined;
+  TrialResults: {
+    answers: Record<string, any>;
+  };
+  TrialApplication: {
+    trialId: string;
+    trialTitle: string;
+  };
+  ApplicationSuccess: {
+    trialTitle: string;
+  };
+};
+
 export type OnboardingStackParamList = {
   LanguageSelection: undefined;
   Login: undefined;
@@ -25,6 +40,7 @@ export type MainStackParamList = {
 };
 
 export type RootStackParamList = {
+  Welcome: undefined;
   Onboarding: undefined;
   Main: undefined;
 };

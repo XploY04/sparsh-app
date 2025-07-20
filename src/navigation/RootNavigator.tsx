@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
+import { WelcomeNavigator } from "./WelcomeNavigator";
 import { OnboardingNavigator } from "./OnboardingNavigator";
 import { MainStackNavigator } from "./MainStackNavigator";
 import { useAppStore } from "../store/appStore";
@@ -51,7 +52,10 @@ export const RootNavigator: React.FC = () => {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {!isOnboardingComplete ? (
-          <Stack.Screen name="Onboarding" component={OnboardingNavigator} />
+          <>
+            <Stack.Screen name="Welcome" component={WelcomeNavigator} />
+            <Stack.Screen name="Onboarding" component={OnboardingNavigator} />
+          </>
         ) : (
           <Stack.Screen name="Main" component={MainStackNavigator} />
         )}

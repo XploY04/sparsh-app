@@ -1,3 +1,10 @@
+// Welcome and trial discovery screens
+export { WelcomeScreen } from "./WelcomeScreen";
+export { TrialQuestionnaireScreen } from "./TrialQuestionnaireScreen";
+export { TrialResultsScreen } from "./TrialResultsScreen";
+export { TrialApplicationScreen } from "./TrialApplicationScreen";
+export { ApplicationSuccessScreen } from "./ApplicationSuccessScreen";
+
 // Onboarding screens
 export { LanguageSelectionScreen } from "./LanguageSelectionScreen";
 export { LoginScreen } from "./LoginScreen";
