@@ -6,6 +6,7 @@ import { WelcomeNavigator } from "./WelcomeNavigator";
 import { OnboardingNavigator } from "./OnboardingNavigator";
 import { MainStackNavigator } from "./MainStackNavigator";
 import { useAppStore } from "../store/appStore";
+import { authService } from "../services/authService";
 import { RootStackParamList } from "./types";
 import {
   notificationService,
@@ -16,9 +17,14 @@ import {
 const Stack = createStackNavigator<RootStackParamList>();
 
 export const RootNavigator: React.FC = () => {
-  const { isOnboardingComplete } = useAppStore();
+  const { isOnboardingComplete, authToken } = useAppStore();
 
   useEffect(() => {
+    // Set auth token if available
+    if (authToken) {
+      authService.setAuthToken(authToken);
+    }
+
     // Initialize notification listeners
     const subscriptions = initializeNotificationListeners();
 
@@ -31,7 +37,7 @@ export const RootNavigator: React.FC = () => {
     return () => {
       cleanupNotificationListeners(subscriptions);
     };
-  }, [isOnboardingComplete]);
+  }, [isOnboardingComplete, authToken]);
 
   const setupNotifications = async () => {
     try {

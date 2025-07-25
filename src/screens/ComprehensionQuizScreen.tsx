@@ -18,14 +18,32 @@ type NavigationProp = StackNavigationProp<
 
 export const ComprehensionQuizScreen: React.FC = () => {
   const navigation = useNavigation<NavigationProp>();
-  const { setQuizCompleted, setOnboardingComplete } = useAppStore();
+  const { setQuizCompleted, setOnboardingComplete, trialProfile } =
+    useAppStore();
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);
   const [showQuizComplete, setShowQuizComplete] = useState(false);
 
   const currentLanguage = getCurrentLanguage();
-  const questions = quizQuestions[currentLanguage];
+
+  // Use dynamic quiz from trial profile, fallback to mock data
+  let questions = quizQuestions[currentLanguage];
+
+  // If trial profile has dynamic questions, use them
+  if (trialProfile?.comprehensionQuiz?.questions) {
+    questions = trialProfile.comprehensionQuiz.questions.map((q: any) => ({
+      id: q.id,
+      question: q.text[currentLanguage] || q.text.en,
+      options: q.options.map(
+        (opt: any) => opt.label[currentLanguage] || opt.label.en
+      ),
+      correctAnswer: q.options.findIndex(
+        (opt: any) => opt.value === q.correctAnswer
+      ),
+    }));
+  }
+
   const currentQuestion = questions[currentQuestionIndex];
   const isLastQuestion = currentQuestionIndex === questions.length - 1;
 

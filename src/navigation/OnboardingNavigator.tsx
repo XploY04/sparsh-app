@@ -10,6 +10,8 @@ import {
   VoiceConsentScreen,
   ComprehensionQuizScreen,
 } from "../screens";
+import { AccountActivationScreen } from "../screens/AccountActivationScreen";
+import { PermanentPinSetupScreen } from "../screens/PermanentPinSetupScreen";
 import { OnboardingStackParamList } from "./types";
 
 const Stack = createStackNavigator<OnboardingStackParamList>();
@@ -27,8 +29,12 @@ export const OnboardingNavigator: React.FC = () => {
         name="LanguageSelection"
         component={LanguageSelectionScreen}
       />
+      <Stack.Screen
+        name="AccountActivation"
+        component={AccountActivationScreen}
+      />
+      <Stack.Screen name="PinSetup" component={PermanentPinSetupScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="PinSetup" component={PinSetupScreen} />
       <Stack.Screen name="AadhaarKyc" component={AadhaarKycScreen} />
       <Stack.Screen name="InformedConsent" component={InformedConsentScreen} />
       <Stack.Screen name="VoiceConsent" component={VoiceConsentScreen} />

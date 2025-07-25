@@ -25,6 +25,28 @@
     "pinMismatch": "PINs do not match. Please try again.",
     "pinSet": "PIN set successfully!"
   },
+  "accountActivation": {
+    "title": "Activate My Account",
+    "subtitle": "Enter your credentials provided by the admin",
+    "participantCodeLabel": "Participant Code",
+    "participantCodePlaceholder": "Enter your participant code",
+    "temporaryPinLabel": "Temporary PIN",
+    "temporaryPinPlaceholder": "Enter 4-digit temporary PIN",
+    "activate": "Activate Account",
+    "activating": "Activating your account...",
+    "success": "Account activated successfully!",
+    "error": "Invalid credentials. Please check and try again.",
+    "missingFields": "Please fill in all required fields"
+  },
+  "permanentPin": {
+    "title": "Create Your Permanent PIN",
+    "subtitle": "Set up a secure 4-digit PIN for your account",
+    "enterPin": "Enter new 4-digit PIN",
+    "confirmPin": "Confirm new PIN",
+    "pinMismatch": "PINs do not match. Please try again.",
+    "pinSet": "Permanent PIN set successfully!",
+    "continue": "Continue to Consent Form"
+  },
   "aadhaarKyc": {
     "title": "Identity Verification",
     "subtitle": "We need to verify your identity using Aadhaar for regulatory compliance",

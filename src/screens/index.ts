@@ -7,6 +7,8 @@ export { ApplicationSuccessScreen } from "./ApplicationSuccessScreen";
 
 // Onboarding screens
 export { LanguageSelectionScreen } from "./LanguageSelectionScreen";
+export { AccountActivationScreen } from "./AccountActivationScreen";
+export { PermanentPinSetupScreen } from "./PermanentPinSetupScreen";
 export { LoginScreen } from "./LoginScreen";
 export { PinSetupScreen } from "./PinSetupScreen";
 export { AadhaarKycScreen } from "./AadhaarKycScreen";

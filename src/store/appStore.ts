@@ -9,7 +9,10 @@ export interface AppState {
 
   // Authentication state
   isAuthenticated: boolean;
+  authToken: string | null;
+  participantCode: string;
   mobileNumber: string;
+  isAccountActivated: boolean;
   isOtpVerified: boolean;
   isPinSet: boolean;
   isKycCompleted: boolean;
@@ -17,6 +20,12 @@ export interface AppState {
   isVoiceConsentRecorded: boolean;
   isQuizCompleted: boolean;
   isOnboardingComplete: boolean;
+
+  // Trial profile data
+  trialProfile: {
+    consentFormText?: string;
+    comprehensionQuiz?: any;
+  } | null;
 
   // Tasks state
   tasks: Task[];
@@ -44,6 +53,9 @@ export interface AppState {
 
   // Actions
   setMobileNumber: (mobile: string) => void;
+  setParticipantCode: (code: string) => void;
+  setAuthToken: (token: string) => void;
+  setAccountActivated: (activated: boolean) => void;
   setOtpVerified: (verified: boolean) => void;
   setPinSet: (set: boolean) => void;
   setKycCompleted: (completed: boolean) => void;
@@ -52,6 +64,7 @@ export interface AppState {
   setQuizCompleted: (completed: boolean) => void;
   setOnboardingComplete: (complete: boolean) => void;
   setAuthenticated: (authenticated: boolean) => void;
+  setTrialProfile: (profile: any) => void;
 
   // Reset function for testing
   resetOnboarding: () => void;
@@ -61,7 +74,10 @@ export const useAppStore = create<AppState>((set, get) => ({
   // Initial state
   language: "en",
   isAuthenticated: false,
+  authToken: null,
+  participantCode: "",
   mobileNumber: "",
+  isAccountActivated: false,
   isOtpVerified: false,
   isPinSet: false,
   isKycCompleted: false,
@@ -69,6 +85,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   isVoiceConsentRecorded: false,
   isQuizCompleted: false,
   isOnboardingComplete: false,
+  trialProfile: null,
   tasks: mockTasks,
 
   // Gamification initial state
@@ -85,6 +102,9 @@ export const useAppStore = create<AppState>((set, get) => ({
   // Actions
   setLanguage: (language) => set({ language }),
   setMobileNumber: (mobileNumber) => set({ mobileNumber }),
+  setParticipantCode: (participantCode) => set({ participantCode }),
+  setAuthToken: (authToken) => set({ authToken }),
+  setAccountActivated: (isAccountActivated) => set({ isAccountActivated }),
   setOtpVerified: (isOtpVerified) => set({ isOtpVerified }),
   setPinSet: (isPinSet) => set({ isPinSet }),
   setKycCompleted: (isKycCompleted) => set({ isKycCompleted }),
@@ -95,6 +115,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   setOnboardingComplete: (isOnboardingComplete) =>
     set({ isOnboardingComplete, isAuthenticated: isOnboardingComplete }),
   setAuthenticated: (isAuthenticated) => set({ isAuthenticated }),
+  setTrialProfile: (trialProfile) => set({ trialProfile }),
 
   // Task actions
   updateTaskStatus: (taskId, status) =>
@@ -191,7 +212,10 @@ export const useAppStore = create<AppState>((set, get) => ({
   resetOnboarding: () =>
     set({
       isAuthenticated: false,
+      authToken: null,
+      participantCode: "",
       mobileNumber: "",
+      isAccountActivated: false,
       isOtpVerified: false,
       isPinSet: false,
       isKycCompleted: false,
@@ -199,6 +223,7 @@ export const useAppStore = create<AppState>((set, get) => ({
       isVoiceConsentRecorded: false,
       isQuizCompleted: false,
       isOnboardingComplete: false,
+      trialProfile: null,
       tasks: mockTasks, // Reset tasks to default
       // Reset gamification state
       totalPoints: 0,

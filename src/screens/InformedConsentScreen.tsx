@@ -9,6 +9,7 @@ import { useAppStore } from "../store/appStore";
 import { t, getCurrentLanguage } from "../locales/i18n";
 import { ScreenHeader } from "../components/ScreenHeader";
 import { informedConsentText } from "../data/mockData";
+import { authService } from "../services/authService";
 import { OnboardingStackParamList } from "../navigation/types";
 
 type NavigationProp = StackNavigationProp<
@@ -18,14 +19,17 @@ type NavigationProp = StackNavigationProp<
 
 export const InformedConsentScreen: React.FC = () => {
   const navigation = useNavigation<NavigationProp>();
-  const { setConsentGiven } = useAppStore();
+  const { setConsentGiven, trialProfile, participantCode } = useAppStore();
   const scrollViewRef = useRef<ScrollView>(null);
 
   const [hasScrolledToEnd, setHasScrolledToEnd] = useState(false);
   const [isReadingAloud, setIsReadingAloud] = useState(false);
+  const [isSubmittingConsent, setIsSubmittingConsent] = useState(false);
 
   const currentLanguage = getCurrentLanguage();
-  const consentText = informedConsentText[currentLanguage];
+  // Use dynamic consent text from trial profile, fallback to mock data
+  const consentText =
+    trialProfile?.consentFormText || informedConsentText[currentLanguage];
 
   const handleScroll = (event: any) => {
     const { layoutMeasurement, contentOffset, contentSize } = event.nativeEvent;
@@ -54,9 +58,40 @@ export const InformedConsentScreen: React.FC = () => {
     }
   };
 
-  const handleRecordConsent = () => {
-    setConsentGiven(true);
-    navigation.navigate("VoiceConsent");
+  const handleRecordConsent = async () => {
+    setIsSubmittingConsent(true);
+
+    try {
+      // Submit consent data point
+      const consentDataPoint = {
+        type: "InformedConsent",
+        timestamp: new Date().toISOString(),
+        data: {
+          participantCode,
+          consentGiven: true,
+          consentVersion: "1.0", // You might want to version your consent forms
+          language: currentLanguage,
+          timestamp: new Date().toISOString(),
+        },
+      };
+
+      const result = await authService.submitDataPoint(consentDataPoint);
+
+      if (result.success) {
+        setConsentGiven(true);
+        navigation.navigate("VoiceConsent");
+      } else {
+        Alert.alert(
+          "Error",
+          result.message || "Failed to submit consent. Please try again."
+        );
+      }
+    } catch (error) {
+      console.error("Error submitting consent:", error);
+      Alert.alert("Error", "An unexpected error occurred. Please try again.");
+    } finally {
+      setIsSubmittingConsent(false);
+    }
   };
 
   return (
@@ -104,14 +139,17 @@ export const InformedConsentScreen: React.FC = () => {
           <Button
             mode="contained"
             onPress={handleRecordConsent}
-            disabled={!hasScrolledToEnd}
+            disabled={!hasScrolledToEnd || isSubmittingConsent}
+            loading={isSubmittingConsent}
             style={[
               styles.recordButton,
-              { opacity: hasScrolledToEnd ? 1 : 0.5 },
+              { opacity: hasScrolledToEnd && !isSubmittingConsent ? 1 : 0.5 },
             ]}
             icon="microphone"
           >
-            {t("informedConsent.recordConsent")}
+            {isSubmittingConsent
+              ? "Submitting Consent..."
+              : t("informedConsent.recordConsent")}
           </Button>
         </View>
       </View>

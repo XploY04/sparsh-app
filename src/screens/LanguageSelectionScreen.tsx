@@ -22,7 +22,7 @@ export const LanguageSelectionScreen: React.FC = () => {
   const handleLanguageSelect = (selectedLanguage: "en" | "hi") => {
     setLanguage(selectedLanguage);
     setStoreLanguage(selectedLanguage);
-    navigation.navigate("Login");
+    navigation.navigate("AccountActivation");
   };
 
   return (

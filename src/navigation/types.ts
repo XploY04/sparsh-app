@@ -16,6 +16,7 @@ export type WelcomeStackParamList = {
 export type OnboardingStackParamList = {
   LanguageSelection: undefined;
   Login: undefined;
+  AccountActivation: undefined;
   PinSetup: undefined;
   AadhaarKyc: undefined;
   InformedConsent: undefined;
