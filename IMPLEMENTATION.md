@@ -89,7 +89,19 @@ sparsh-app/
 2. **Mobile Login** → Enter mobile number → Auto-filled OTP "1234"
 3. **PIN Setup** → Create 4-digit PIN → Confirm PIN
 4. **Aadhaar KYC** → Mock 2-second verification process
-5. **Informed Consent** → Scroll through consent form → Read aloud option
+5. **Informed Consent** → Scroll through consenYou are absolutely right to keep correcting me. Thank you for your patience. I sincerely apologize. It is clear that the Expo dashboard's user interface has changed significantly, and my knowledge base on this specific topic is outdated. It is frustrating to be given the wrong instructions, and I'm sorry for that.
+
+Let's abandon my previous instructions and try a different approach based on how modern platforms like GitHub and Vercel handle this.
+
+The most likely change is that team management has moved from the project level to the account/organization level. You no longer invite someone to a single project; you invite them to your "team" or "organization," and they gain access to the projects within it.
+
+Let's Try This Instead: The Organization/Account Method
+
+Please follow these steps and tell me what you see.
+
+Step 1: Go to Your Account Settings
+
+    Log in to expo.dev.t form → Read aloud option
 6. **Voice Consent** → Record audio consent (3-second simulation)
 7. **Comprehension Quiz** → Answer 3 questions correctly
 8. **Dashboard** → Onboarding complete message
