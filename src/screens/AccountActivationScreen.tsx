@@ -18,6 +18,10 @@ type NavigationProp = StackNavigationProp<
   "AccountActivation"
 >;
 
+// --- [ADDED] Demo credentials for preview/development builds ---
+const DEMO_PARTICIPANT_CODE = "DEMO001";
+const DEMO_TEMPORARY_PIN = "1234";
+
 export const AccountActivationScreen: React.FC = () => {
   const navigation = useNavigation<NavigationProp>();
   const {
@@ -31,6 +35,12 @@ export const AccountActivationScreen: React.FC = () => {
   const [temporaryPin, setTemporaryPin] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showDevHelp, setShowDevHelp] = useState(false);
+
+  // --- [ADDED] Handler to populate inputs with demo credentials ---
+  const handleUseDemoCredentials = () => {
+    setParticipantCodeLocal(DEMO_PARTICIPANT_CODE);
+    setTemporaryPin(DEMO_TEMPORARY_PIN);
+  };
 
   // Show dev help in development mode
   if (__DEV__ && showDevHelp) {
@@ -139,6 +149,16 @@ export const AccountActivationScreen: React.FC = () => {
             secureTextEntry
           />
 
+          {
+            <Button
+              mode="text"
+              onPress={handleUseDemoCredentials}
+              style={styles.demoButton}
+            >
+              Use Demo Credentials
+            </Button>
+          }
+
           <Button
             mode="contained"
             onPress={handleActivation}
@@ -188,8 +208,12 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: backgroundColors.card,
   },
+  // --- [ADDED] Style for the demo button ---
+  demoButton: {
+    alignSelf: "center",
+  },
   button: {
-    marginTop: 24,
+    marginTop: 8, // Adjusted margin to accommodate demo button
     paddingVertical: 8,
   },
   buttonLabel: {
